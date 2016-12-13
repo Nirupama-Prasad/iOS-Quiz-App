@@ -12,8 +12,21 @@
 
 @end
 
+
 @implementation QuizViewController
 //@synthesize Operand1;
+@synthesize Numpad0;
+@synthesize Numpad1;
+@synthesize Numpad2;
+@synthesize Numpad3;
+@synthesize Numpad4;
+@synthesize Numpad5;
+@synthesize Numpad6;
+@synthesize Numpad7;
+@synthesize Numpad8;
+@synthesize Numpad9;
+@synthesize Next;
+
 int qno=1;
 int r, r2;
 int Ans;
@@ -21,7 +34,40 @@ int digit;
 int correct=-1;
 int score=0;
 NSTimer *timer;
-static int remainingcounts; //why static?
+int remainingcounts; //why static?
+//--------------Screen Rotation Handling-------------------------------//
+-(void) changedView{
+    UIInterfaceOrientation theOrientation = self.interfaceOrientation;
+    if ((theOrientation == UIInterfaceOrientationLandscapeLeft)||(theOrientation == UIInterfaceOrientationLandscapeRight)){
+        Numpad0.frame = CGRectMake(259,219,44,49);
+        Numpad1.frame = CGRectMake(206,58,45,49);
+        Numpad2.frame = CGRectMake(264,60,41,45);
+        Numpad3.frame = CGRectMake(313,56,49,50);
+        Numpad4.frame = CGRectMake(206,109,42,50);
+        Numpad5.frame = CGRectMake(264,116,51,45);
+        Numpad6.frame = CGRectMake(313,116,50,46);
+        Numpad7.frame = CGRectMake(206,173,45,30);
+        Numpad8.frame = CGRectMake(262,174,45,43);
+        Numpad9.frame = CGRectMake(315,170,45,46);
+        Next.frame    = CGRectMake(216,260,136,52);
+    }else{
+        Numpad0.frame = CGRectMake(126,454,35,41);
+        Numpad1.frame = CGRectMake(63,300,46,27);
+        Numpad2.frame = CGRectMake(125,300,46,27);
+        Numpad3.frame = CGRectMake(189,300,46,27);
+        Numpad4.frame = CGRectMake(63,348,46,25);
+        Numpad5.frame = CGRectMake(125,341,46,37);
+        Numpad6.frame = CGRectMake(189,343,46,35);
+        Numpad7.frame = CGRectMake(63,395,46,35);
+        Numpad8.frame = CGRectMake(125,395,46,35);
+        Numpad9.frame = CGRectMake(197,389,31,47);
+        Next.frame    = CGRectMake(61,478,173,50);
+    }
+}
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self changedView];
+}
+//--------------------------------------------------------------------//
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,7 +82,7 @@ static int remainingcounts; //why static?
     // Dispose of any resources that can be recreated.
 }
 
-
+//--------------------------Receives Operation ID from segue and starts quiz--------//
 - (void)setOperators:(NSString *)O{
     self.Operand1 = [[UILabel alloc] init];
     self.Operator = [[UILabel alloc] init];
@@ -97,6 +143,8 @@ static int remainingcounts; //why static?
     remainingcounts = 5;
 }
 
+//--------------------------------------------------------------------//
+//-----------------------Timer fn def starts here---------------------//
 -(void)countDown {
    NSLog(@"Value of Timer = %d",remainingcounts);
     [self.TimerLabel setText:[NSString stringWithFormat:@"%d",remainingcounts]];
@@ -205,10 +253,11 @@ static int remainingcounts; //why static?
         self.Answer.text = @"?";
     }
 }
+//-----------------------Button Click Action-------------------------//
 - (IBAction) buttonPressed2:(UIButton*) ButtonN{
 
     NSLog(@"Correct %d",correct);
-    if(ButtonN==_Next){
+    if(ButtonN==Next){
         remainingcounts = 5;
         if ([_Operator.text isEqualToString: @"+"]){
         correct = r+r2;
@@ -306,7 +355,7 @@ static int remainingcounts; //why static?
  //       }
         
         
-    }else if(ButtonN==_Numpad1){
+    }else if(ButtonN==Numpad1){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 1;
         }else {
@@ -316,7 +365,7 @@ static int remainingcounts; //why static?
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
         
-    }else if(ButtonN==_Numpad2){
+    }else if(ButtonN==Numpad2){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 2;
         }else {
@@ -324,7 +373,7 @@ static int remainingcounts; //why static?
             Ans = digit * 10 + 2;
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
-    }else if(ButtonN==_Numpad3){
+    }else if(ButtonN==Numpad3){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 3;
         }else {
@@ -332,7 +381,7 @@ static int remainingcounts; //why static?
             Ans = digit * 10 + 3;
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
-    }else if(ButtonN==_Numpad4){
+    }else if(ButtonN==Numpad4){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 4;
         }else {
@@ -340,7 +389,7 @@ static int remainingcounts; //why static?
             Ans = digit * 10 + 4;
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
-    }else if(ButtonN==_Numpad5){
+    }else if(ButtonN==Numpad5){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 5;
         }else {
@@ -348,7 +397,7 @@ static int remainingcounts; //why static?
             Ans = digit * 10 + 5;
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
-    }else if(ButtonN==_Numpad6){
+    }else if(ButtonN==Numpad6){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 6;
         }else {
@@ -356,7 +405,7 @@ static int remainingcounts; //why static?
             Ans = digit * 10 + 6;
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
-    }else if(ButtonN==_Numpad7){
+    }else if(ButtonN==Numpad7){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 7;
         }else {
@@ -364,7 +413,7 @@ static int remainingcounts; //why static?
             Ans = digit * 10 + 7;
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
-    }else if(ButtonN==_Numpad8){
+    }else if(ButtonN==Numpad8){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 8;
         }else {
@@ -372,7 +421,7 @@ static int remainingcounts; //why static?
             Ans = digit * 10 + 8;
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
-    }else if(ButtonN==_Numpad9){
+    }else if(ButtonN==Numpad9){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 9;
         }else {
@@ -380,7 +429,7 @@ static int remainingcounts; //why static?
             Ans = digit * 10 + 9;
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
-    }else if(ButtonN==_Numpad0){
+    }else if(ButtonN==Numpad0){
         if([_Answer.text isEqualToString:@"?"]){
             Ans = 0;
         }else {
@@ -394,17 +443,19 @@ static int remainingcounts; //why static?
     }
     //});
 }
+//---------------------------Prepare for Segue-----------------------------------------//
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id) sender{
     if([segue.identifier isEqualToString:@"toScore"]){
         ResultsViewController *controller = (ResultsViewController *) segue.destinationViewController;
         [controller setScore:(int *)score];
     }
 }
+//---------------------------Navigation Handling--------------------------------------//
 -(IBAction)NavBack:(UIButton *) bButton{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Exit Quiz" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
     [alert show];
 }
-
+//---------------------------Quiz quit warning---------------------------------------//
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
         [self performSegueWithIdentifier:@"toQuiz" sender:self];

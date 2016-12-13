@@ -4,11 +4,10 @@
 //
 //  Created by Nirupama Prasad on 12/9/16.
 //  Copyright © 2016 Nirupama Prasad. All rights reserved.
-//
+//  Damn Straight
 
 #import "ViewController.h"
-//NSString *PassOpp;
-//NSString *PassOpSegue;
+
 @interface ViewController ()
 
 //Declare Pass Variable
@@ -36,10 +35,7 @@
 }
 
 //Check which button was tapped
-//-(IBAction)  (sender: AnyObject) {
- //   performSegueWithIdentifier("about", sender: sender)
-//}
-
+//----------------Button Press Check------------------------//
 - (IBAction) buttonPressed: (UIButton*) Button{
     if (Button == _AdditionButton)
     {
@@ -57,7 +53,7 @@
         PassOpSegue = @"toQuizm";
     }
 }
-
+//--------------------Segue to Narnia---------------------------//
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id) sender{
     if([segue.identifier isEqualToString:PassOpSegue]){
         QuizViewController *controller = (QuizViewController *) segue.destinationViewController;

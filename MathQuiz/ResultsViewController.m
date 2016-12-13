@@ -13,6 +13,21 @@
 @end
 
 @implementation ResultsViewController
+@synthesize Result;
+
+//--------------Screen Rotation Handling-------------------------------//
+-(void) changedView{
+    UIInterfaceOrientation theOrientation = self.interfaceOrientation;
+    if ((theOrientation == UIInterfaceOrientationLandscapeLeft)||(theOrientation == UIInterfaceOrientationLandscapeRight)){
+        Result.frame    = CGRectMake(198,115,43,76);
+    }else{
+        Result.frame    = CGRectMake(198,115,43,76);
+    }
+}
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self changedView];
+}
+//--------------------------------------------------------------------//
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,15 +39,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+//------------Sets Score or Something :P-------------------------------//
 - (void)  setScore:(int *)S{
     self.Result = [[UILabel alloc] init];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -40,4 +47,5 @@
    
         [self.Result setText:[NSString stringWithFormat:@"%d",S]];});
 }
+//---------------------------------------------------------------------//
 @end
