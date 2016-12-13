@@ -22,9 +22,10 @@
 - (void) setOperators:(NSString *)O;
 
 
-- (IBAction)Numpad0:(id)sender;
+//- (IBAction)Numpad0:(id)sender;
 @property (nonatomic, retain) IBOutlet UILabel *TimerLabel;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *Backbutton;
 @property (strong,nonatomic)IBOutlet UIButton*ButtonN;
 @property (weak, nonatomic) IBOutlet UIButton *Numpad0;
 @property (weak, nonatomic) IBOutlet UINavigationBar *NavBar;

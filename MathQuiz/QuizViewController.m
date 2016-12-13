@@ -7,7 +7,7 @@
 //
 
 #import "QuizViewController.h"
-
+#import "ViewController.h"
 @interface QuizViewController ()
 
 @end
@@ -21,19 +21,12 @@ int digit;
 int correct=-1;
 int score=0;
 NSTimer *timer;
-static int remainingcounts;
+static int remainingcounts; //why static?
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    qno=1;
+                qno=1;
                dispatch_async(dispatch_get_main_queue(), ^{
-    timer = [NSTimer scheduledTimerWithTimeInterval:1
-                                             target:self
-                                           selector:@selector(countDown)
-                                           userInfo:nil
-                                            repeats:YES];
-    remainingcounts = 5;
-        NSLog(@"Value of Timer = %d",remainingcounts);
                 });
     // Do any additional setup after loading the view.
 }
@@ -45,8 +38,6 @@ static int remainingcounts;
 
 
 - (void)setOperators:(NSString *)O{
-   //O = @"a";
-    NSLog(@"Value of O:%@",O);
     self.Operand1 = [[UILabel alloc] init];
     self.Operator = [[UILabel alloc] init];
     self.Operand2 = [[UILabel alloc] init];
@@ -55,12 +46,8 @@ static int remainingcounts;
    NSString *Oper=@"a";
     NSString *Oper2=@"s";
     NSString *Oper3=@"m";
-    
-    NSLog(@"Value of O = %@",O);
-    if ([O isEqualToString:Oper]){
-        
-        NSLog(@"Value of O inside if = %@",O);
-        dispatch_async(dispatch_get_main_queue(), ^{
+        if ([O isEqualToString:Oper]){
+                dispatch_async(dispatch_get_main_queue(), ^{
             qno =1;
                 r = arc4random_uniform(10);
                 r2 = arc4random_uniform(10);
@@ -72,59 +59,65 @@ static int remainingcounts;
         [self.Operand1 setText:[NSString stringWithFormat:@"%d",r]];
         [self.Operand2 setText:[NSString stringWithFormat:@"%d",r2]];
 
-        //    self.TimerLabel.text=[NSString stringWithFormat:@"%d", remainingcounts];
-        NSLog(@"Value of Timer = %d",remainingcounts);
         });
-  //      [[[NSRunLoop mainRunLoop] runUntilDate:NSdate dateWithTimeIntervalSinceNow:0.5] ];
-  //      NSLog(@"Value of Operator = %@",self.Operator.text);
-  //      NSLog(@"Value of Operand1 = %@",self.Operand1.text);
-  //      NSLog(@"Value of Operand2 = %@",self.Operand2.text);
+
     }else if ([O isEqualToString:Oper2]){
          dispatch_async(dispatch_get_main_queue(), ^{
   
              r = arc4random_uniform(10);
              r2 = arc4random_uniform(10);
-             if (r>r2){}
-             else{
+             if (r2>r){
                  int temp1 =r2;
                  r2=r;
                  r=temp1;
              }
-                // -[self buttonPressed: _ButtonN];
         self.QuesNo.text = [NSString stringWithFormat:@"%d.",qno];
         self.Operator.text = [NSString stringWithFormat:@"-"];
         self.Operand1.text = [NSString stringWithFormat:@"%d",r];
                  self.Operand2.text = [NSString stringWithFormat:@"%d",r2];
-                 
-                 // Call Action from here
                      self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
              
              
              });
     }else if ([O isEqualToString:Oper3]){
-        NSLog(@"In X");
         dispatch_async(dispatch_get_main_queue(), ^{
             r = arc4random_uniform(10);
             r2 = arc4random_uniform(10);
-   //         NSLog(@"Value of Operator = %@",self.Operator.text);
-   //         NSLog(@"Value of Operand1 = %@",self.Operand1.text);
-   //         NSLog(@"Value of Operand2 = %@",self.Operand2.text);
         self.Operator.text = [NSString stringWithFormat:@"X"];
         self.Operand1.text = [NSString stringWithFormat:@"%d",r];
         self.Operand2.text = [NSString stringWithFormat:@"%d",r2];
         });
     }
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                             target:self
+                                           selector:@selector(countDown)
+                                           userInfo:nil
+                                            repeats:YES];
+    remainingcounts = 5;
 }
 
 -(void)countDown {
-    NSLog(@"Value of Timer = %d",remainingcounts);
+   NSLog(@"Value of Timer = %d",remainingcounts);
     [self.TimerLabel setText:[NSString stringWithFormat:@"%d",remainingcounts]];
+    if ([_Operator.text isEqualToString: @"+"]){
+        correct = r+r2;
+    }
+    else if([_Operator.text isEqualToString: @"-"]){
+        correct = r-r2;
+    }
+    else if([_Operator.text isEqualToString: @"X"]){
+        correct = r*r2;
+    }
     if (Ans == correct){
+        //Countdown answer check
+        NSLog(@"Countdown answer check");
         NSLog(@"Correct");
         NSLog(@"%d",qno);
         if(qno > 10){
-            /*            [self performSegueWithIdentifier:@"toScore" sender:ButtonN];*/
+            qno =1;
             [timer invalidate];
+            [self performSegueWithIdentifier:@"toScore" sender:self];
         }
         self.Answer.text = [NSString stringWithFormat:@"?"];
         remainingcounts=5;
@@ -132,15 +125,24 @@ static int remainingcounts;
         qno++;
         r = arc4random_uniform(10);
         r2 = arc4random_uniform(10);
+        if([_Operator.text isEqualToString: @"-"]){
+            if (r2>r){
+                int temp1 =r2;
+                r2=r;
+                r=temp1;
+            }
+        }
         
-        // -[self buttonPressed: _ButtonN];
+        score++;
+        if(qno>10){
+            qno = 1;
+            [self performSegueWithIdentifier:@"toScore" sender:self];
+        }
         self.QuesNo.text = [NSString stringWithFormat:@"%d.",qno];
         self.Operand1.text = [NSString stringWithFormat:@"%d",r];
         self.Operand2.text = [NSString stringWithFormat:@"%d",r2];
-        correct = -2;
         Ans = -1;
         self.Answer.text = @"?";
-        score++;
         NSLog(@"Score %d",score);
         NSString *message = @"Correct!";
         
@@ -152,7 +154,7 @@ static int remainingcounts;
         [toast show];
         
         int duration = 0.1; // duration in seconds
-        
+
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [toast dismissWithClickedButtonIndex:0 animated:YES];
         });
@@ -160,9 +162,27 @@ static int remainingcounts;
 
     }
         if (--remainingcounts == -1) {
-        //[timer invalidate];
         qno++;
+            NSString *message;
+            if (Ans==correct){
+                message =@"Correct!";
+            }else{
+                message =@"Wrong";
+            }
+            UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:message
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:nil, nil];
+            [toast show];
+            int duration = 0.1; // duration in seconds
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                [toast dismissWithClickedButtonIndex:0 animated:YES];
+            });
+
         if(qno > 10){
+            qno = 1;
             [self performSegueWithIdentifier:@"toScore" sender:self];
             [timer invalidate];
         }
@@ -171,44 +191,33 @@ static int remainingcounts;
         [self.TimerLabel setText:[NSString stringWithFormat:@"%d",remainingcounts]];
         r = arc4random_uniform(10);
         r2 = arc4random_uniform(10);
-        if (r>r2){}
-        else{
-            int temp1 =r2;
-            r2=r;
-            r=temp1;
+        if([_Operator.text isEqualToString: @"-"]){
+            if (r2>r){
+                int temp1 =r2;
+                r2=r;
+                r=temp1;
+            }
         }
-        // -[self buttonPressed: _ButtonN];
         self.QuesNo.text = [NSString stringWithFormat:@"%d.",qno];
         self.Operand1.text = [NSString stringWithFormat:@"%d",r];
         self.Operand2.text = [NSString stringWithFormat:@"%d",r2];
-        correct = 0;
         Ans = -1;
         self.Answer.text = @"?";
     }
 }
 - (IBAction) buttonPressed2:(UIButton*) ButtonN{
-    NSLog(@"%d",qno);
-    //dispatch_async(dispatch_get_main_queue(), ^{
-    
+
+    NSLog(@"Correct %d",correct);
     if(ButtonN==_Next){
         remainingcounts = 5;
         if ([_Operator.text isEqualToString: @"+"]){
-        NSLog(@"r = %d,r2 = %d",r,r2);
         correct = r+r2;
-        NSLog(@"Ans entered is : %d",Ans);
-        NSLog(@"Correct answer is : %d",correct);
         }
         else if([_Operator.text isEqualToString: @"-"]){
-            NSLog(@"r = %d,r2 = %d",r,r2);
             correct = r-r2;
-            NSLog(@"Ans entered is : %d",Ans);
-            NSLog(@"Correct answer is : %d",correct);
         }
         else if([_Operator.text isEqualToString: @"X"]){
-            NSLog(@"r = %d,r2 = %d",r,r2);
             correct = r*r2;
-            NSLog(@"Ans entered is : %d",Ans);
-            NSLog(@"Correct answer is : %d",correct);
         }NSString *message = @"Wrong";
         
         UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
@@ -216,7 +225,6 @@ static int remainingcounts;
                                                        delegate:nil
                                               cancelButtonTitle:nil
                                               otherButtonTitles:nil, nil];
-        //[toast show];
         
         int duration = 1; // duration in seconds
         
@@ -224,11 +232,27 @@ static int remainingcounts;
             [toast dismissWithClickedButtonIndex:0 animated:YES];
         });
         if(Ans == correct){
-            NSLog(@"Correct answer");
-            NSLog(@"Score %d",score);
             score++;
-            NSLog(@"Score %d",score);
             NSString *message = @"Correct!";
+            qno++;
+            if(qno > 11){
+                qno =1;
+                [self performSegueWithIdentifier:@"toScore" sender:ButtonN];
+            }
+            self.Answer.text = [NSString stringWithFormat:@"?"];
+            r = arc4random_uniform(10);
+            r2 = arc4random_uniform(10);
+            if (r>r2){}
+            else{
+                int temp1 =r2;
+                r2=r;
+                r=temp1;
+            }
+            self.QuesNo.text = [NSString stringWithFormat:@"%d.",qno];
+            self.Operand1.text = [NSString stringWithFormat:@"%d",r];
+            self.Operand2.text = [NSString stringWithFormat:@"%d",r2];
+            Ans = -1;
+            self.Answer.text = @"?";
             
             UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
                                                             message:message
@@ -236,7 +260,6 @@ static int remainingcounts;
                                                   cancelButtonTitle:nil
                                                   otherButtonTitles:nil, nil];
             [toast show];
-            
             int duration = 0.1; // duration in seconds
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
@@ -245,7 +268,6 @@ static int remainingcounts;
 
     }
         else{
-            NSLog(@"Wrong answer");
             NSString *message = @"Wrong";
             
             UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
@@ -261,9 +283,9 @@ static int remainingcounts;
                 [toast dismissWithClickedButtonIndex:0 animated:YES];
             });}
         
-       // while(qno<=10){
             qno++;
             if(qno >= 11){
+                qno = 1;
                 [self performSegueWithIdentifier:@"toScore" sender:ButtonN];
             }
             self.Answer.text = [NSString stringWithFormat:@"?"];
@@ -275,11 +297,10 @@ static int remainingcounts;
                 r2=r;
                 r=temp1;
             }
-            // -[self buttonPressed: _ButtonN];
             self.QuesNo.text = [NSString stringWithFormat:@"%d.",qno];
             self.Operand1.text = [NSString stringWithFormat:@"%d",r];
             self.Operand2.text = [NSString stringWithFormat:@"%d",r2];
-        correct = 0;
+        //correct = -2;
         Ans = -1;
         self.Answer.text = @"?";
  //       }
@@ -291,6 +312,7 @@ static int remainingcounts;
         }else {
             digit=[_Answer.text integerValue];
             Ans = digit * 10 + 1;
+            
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
         
@@ -367,24 +389,28 @@ static int remainingcounts;
         }
         self.Answer.text = [NSString stringWithFormat:@"%d",Ans];
     }
+    if (Ans == correct){
+        remainingcounts=0;
+    }
     //});
 }
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id) sender{
     if([segue.identifier isEqualToString:@"toScore"]){
         ResultsViewController *controller = (ResultsViewController *) segue.destinationViewController;
         [controller setScore:(int *)score];
-      //  NSLog(@"Value of PassOpp = %@",Score);
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(IBAction)NavBack:(UIButton *) bButton{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Exit Quiz" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
+    [alert show];
 }
-*/
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        [self performSegueWithIdentifier:@"toQuiz" sender:self];
+        buttonIndex = 0;
+        
+    }}
+
 
 @end

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503253303.9391"
+            timestampString = "503321563.364223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "-setOperators:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,27 +42,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503253303.9391"
+            timestampString = "503321563.364223"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-setOperators:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathQuiz/QuizViewController.m"
+            timestampString = "503321563.364223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
             endingLineNumber = "82"
-            landmarkName = "-setOperators:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503261164.846465"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
             landmarkName = "-setOperators:"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,27 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503209297.771552"
+            timestampString = "503321563.364223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "-setOperators:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503209297.771552"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "-setOperators:"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503253303.9391"
+            timestampString = "503321563.364223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-setOperators:"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503253303.9391"
+            timestampString = "503321563.364223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-setOperators:"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,76 +218,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503253303.9391"
+            timestampString = "503321563.364223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "-setOperators:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503253303.9391"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-setOperators:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__35-[QuizViewController setOperators:]_block_invoke.53"
-                  moduleName = "MathQuiz"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nirupamaprasad/Documents/CTCI/iOS/MathQuiz/MathQuiz/QuizViewController.m"
-                  timestampString = "503186618.6643"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "783">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.56"
-                  moduleName = "MathQuiz"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nirupamaprasad/Documents/CTCI/iOS/MathQuiz/MathQuiz/QuizViewController.m"
-                  timestampString = "503186618.667987"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "51">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.57"
-                  moduleName = "MathQuiz"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nirupamaprasad/Documents/CTCI/iOS/MathQuiz/MathQuiz/QuizViewController.m"
-                  timestampString = "503186618.671016"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "29">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -313,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathQuiz/QuizViewController.m"
-            timestampString = "503261942.198536"
+            timestampString = "503321960.214359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
             landmarkName = "-buttonPressed2:"
             landmarkType = "7">
          </BreakpointContent>
