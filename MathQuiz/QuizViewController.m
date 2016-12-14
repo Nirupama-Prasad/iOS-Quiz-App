@@ -458,6 +458,7 @@ int remainingcounts; //why static?
 //---------------------------Quiz quit warning---------------------------------------//
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
+        [timer invalidate];
         [self performSegueWithIdentifier:@"toQuiz" sender:self];
         buttonIndex = 0;
         
